@@ -10,7 +10,8 @@ def model_function(x1):
     x1 = pd.DataFrame(x1, columns=columns)
     loaded_model = joblib.load('.//Models//decision_tree_model.pkl')
     loaded_model_incoder = joblib.load('.//Models//incoder_model.pkl')
-    result = loaded_model.predict(loaded_model_incoder.transform(x1))[0]
+    x1 = loaded_model_incoder.transform(x1)
+    result = loaded_model.predict(x1)[0]
     return result
 
 
