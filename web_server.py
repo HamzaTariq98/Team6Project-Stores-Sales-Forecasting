@@ -8,12 +8,10 @@ app = Flask(__name__)
 
 def model_function(x1):
     x1 = pd.DataFrame(x1, columns=['Store','Dept','Year','Month','IsHoliday','Type','Size','Temperature','Fuel_Price','MarkDown1','MarkDown2','MarkDown3','MarkDown4','MarkDown5','CPI','Unemployment'])
+       
     loaded_model = joblib.load('.//Models//decision_tree_model.pkl')
-    time.sleep(1)
     loaded_model_incoder = joblib.load('.//Models//incoder_model.pkl')
-    time.sleep(1)
     x1 = loaded_model_incoder.transform(x1)
-    time.sleep(1)
     result = loaded_model.predict(x1)[0]
     return result
 
@@ -42,25 +40,18 @@ def model_run():
         Dept = float(Dept)
 
     # Year
-    Year = request.form.get('Year')
-    if Year == None or Year == '':
-        Year = 10
-    else:
-        Year = float(Year)
+    Year = float(request.form.get('Year'))
 
     # Month
-    Month = request.form.get('Month')
-    if Month == None or Month == '':
-        Month = 10
-    else:
-        Month = float(Month)
+    Month = float(request.form.get('Month'))
+
 
     # IsHoliday
     IsHoliday = request.form.get('IsHoliday')
     if IsHoliday == 'Yes':
-        IsHoliday = 1
+        IsHoliday = float(1)
     else:
-         IsHoliday = 0
+         IsHoliday = float(0)
     # Type
     Type = request.form.get('Type')
     if Type == None or Type == '':
