@@ -1,4 +1,5 @@
 import joblib
+import time
 import pandas as pd
 from flask import Flask, render_template, request
 
@@ -9,9 +10,13 @@ def model_function(x1):
     columns = ['Store','Dept','Year','Month','IsHoliday','Type','Size','Temperature','Fuel_Price','MarkDown1','MarkDown2','MarkDown3','MarkDown4','MarkDown5','CPI','Unemployment']
     x1 = pd.DataFrame(x1, columns=columns)
     loaded_model = joblib.load('.//Models//decision_tree_model.pkl')
+    time.sleep(0.2)
     loaded_model_incoder = joblib.load('.//Models//incoder_model.pkl')
+    time.sleep(0.2)
     x1 = loaded_model_incoder.transform(x1)
+    time.sleep(0.2)
     result = loaded_model.predict(x1)[0]
+    time.sleep(0.2)
     return result
 
 
