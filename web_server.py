@@ -17,7 +17,7 @@ def model_function(x1):
 
 @app.route("/")
 def main_page():
-    return render_template('index.html')
+    return render_template('index.html', result='......')
 
 @app.route("/model_run", methods=['POST'])
 def model_run():
@@ -54,11 +54,10 @@ def model_run():
 
     # IsHoliday
     IsHoliday = request.form.get('IsHoliday')
-    if IsHoliday == None or IsHoliday == '':
-        IsHoliday = 10
+    if IsHoliday == 'Yes':
+        IsHoliday = 1
     else:
-        IsHoliday = float(IsHoliday)
-
+         IsHoliday = 0
     # Type
     Type = request.form.get('Type')
     if Type == None or Type == '':

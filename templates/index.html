@@ -27,104 +27,214 @@
 </body>
 </html> -->
 
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Machine Learning Model</title>
-    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico" />
     <style>
-        form{
-            background-color: rgb(97 77 9);
+        body {
             color: aliceblue;
+            background-color: #120e16;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; /* Set a preferred font */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
+        }
+        form {
+            width: 360px;
+            background-color: rgb(0, 29, 63);
+            color: aliceblue;
+            margin: 0 auto; /* Center the form horizontally */
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+        }
+        label {
+            margin: 11px;
+            font-weight: bold;
+        }
+
+        /* Apply styles to the input field */
+        input[type="text"] {
+            padding: 4px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 200px; /* Adjust the maximum width as needed */
+            box-sizing: border-box; /* Ensure padding and border are included in width */
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        /* Apply styles to the input field when it's focused (clicked) */
+        input[type="text"]:focus {
+            border-color: #007bff; /* Change to your preferred focus color */
+            outline: none; /* Remove the default focus outline */
+        }
+
+        /* Style for buttons */
+        button {
+            padding: 10px 20px;
+            background-color: rgb(5 40 159); /* Primary button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for buttons */
+        button:hover {
+            background-color: #0056b3; /* Darker color on hover */
+        }
+
+        /* Apply styles to the button when it's focused (clicked) */
+        button:focus {
+            outline: none; /* Remove the default focus outline */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.7); /* Add a subtle shadow on focus */
+        }
+
+        /* Additional styles for different button types if needed */
+        .button-secondary {
+            background-color: #6c757d; /* Secondary button color */
+        }
+
+        .button-danger {
+            background-color: #dc3545; /* Danger button color */
+        }
+
+        /* Style for the select element */
+        select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box; /* Ensure padding and border are included in width */
+            font-size: 14px;
+            background-color: #fff; /* Set the background color */
+            color: #333; /* Set the text color */
+            cursor: pointer;
+        }
+
+        /* Apply styles to the select element when it's focused (clicked) */
+        select:focus {
+            border-color: #007bff; /* Change to your preferred focus color */
+            outline: none; /* Remove the default focus outline */
+        }
+
+
+        p2{
+            font-size: small;
+        }
+        img {
+            float: right;
+            width: 600px;
+            margin-left: 20px; /* Add some margin to create space between images and content */
         }
     </style>
-</head>
-<body>
-    <h1>Machine Learning Model</h1>
-    <br>
-        <!-- GitHub Link Button -->
-        <a href="https://github.com/HamzaTariq98/Team6Project" target="_blank"><button type="button">Code Link!</button></a>
-    <br>
+  </head>
+  <body>
+    <h1>Stores Sales Forecasting Model</h1>
+    <br />
+    <img src="static\Picture1.png" alt="Pic not found :\"><br />
+    <img src="static\Picture2.png" alt="Pic not found :\"><br /><br />
+
+    <a href="https://github.com/HamzaTariq98/Team6Project" target="_blank"
+      ><button type="button">Code Link!</button></a
+    >
+    <br />
     <form action="/model_run" method="POST">
-        <br>
+      <br />
 
-        <label for="Store">Store: (optional = 10)</label>
-        <input type="text" id="Store" name="Store" ><br><br>
+      <label for="Store">Store:</label>
+      <input type="text" id="Store" name="Store" value="10" /><br /><br />
 
+      <label for="Dept">Dept:</label>
+      <input type="text" id="Dept" name="Dept" value="10"/><br /><br />
 
-        <label for="Dept">Dept: (optional = 10)</label>
-        <input type="text" id="Dept" name="Dept" ><br><br>
+      <label for="Year">Year:</label>
+      <select name="Year" id="Year">
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+      </select>
+ 
 
+      <label for="Month">Month:</label>
+      <select name="Month" id="Month">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select> <br /><br/>
+      
+      <label for="IsHoliday">IsHoliday:</label>
 
-        <label for="Year">Year: (optional = 10)</label>
-        <input type="text" id="Year" name="Year" ><br><br>
+      <input type="radio" id="IsHolidayNo" name="IsHoliday" value="No" checked/>
+      <label class="radio-label" for="IsHolidayNo">No</label>
 
+      <input type="radio" id="IsHolidayYes" name="IsHoliday" value="Yes"/>
+      <label class="radio-label" for="IsHolidayYes">Yes</label><br /><br />
+      
+      
+      <label for="Type">Type:</label>
+      <input type="text" id="Type" name="Type" value="10"/><br /><br />
 
-        <label for="Month">Month: (optional = 10)</label>
-        <input type="text" id="Month" name="Month" ><br><br>
+      <label for="Size">Size:</label>
+      <input type="text" id="Size" name="Size" value="10"/><br /><br />
 
+      <label for="Temperature">Temperature:</label>
+      <input type="text" id="Temperature" name="Temperature" value="10"/><br /><br />
 
-        <label for="IsHoliday">IsHoliday: (optional = 10)</label>
-        <input type="text" id="IsHoliday" name="IsHoliday" ><br><br>
+      <label for="Fuel_Price">Fuel_Price:</label>
+      <input type="text" id="Fuel_Price" name="Fuel_Price"value="10" /><br /><br />
 
+      <label for="MarkDown1">MarkDown1:</label>
+      <input type="text" id="MarkDown1" name="MarkDown1" value="0"/><br /><br />
 
-        <label for="Type">Type: (optional = 10)</label>
-        <input type="text" id="Type" name="Type" ><br><br>
+      <label for="MarkDown2">MarkDown2:</label>
+      <input type="text" id="MarkDown2" name="MarkDown2" value="0"/><br /><br />
 
+      <label for="MarkDown3">MarkDown3:</label>
+      <input type="text" id="MarkDown3" name="MarkDown3" value="0"/><br /><br />
 
-        <label for="Size">Size: (optional = 10)</label>
-        <input type="text" id="Size" name="Size" ><br><br>
+      <label for="MarkDown4">MarkDown4:</label>
+      <input type="text" id="MarkDown4" name="MarkDown4" value="0"/><br /><br />
 
+      <label for="MarkDown5">MarkDown5:</label>
+      <input type="text" id="MarkDown5" name="MarkDown5" value="0"/><br /><br />
 
-        <label for="Temperature">Temperature: (optional = 10)</label>
-        <input type="text" id="Temperature" name="Temperature" ><br><br>
+      <label for="CPI">CPI:</label>
+      <input type="text" id="CPI" name="CPI" value="10" /><br /><br/>
 
+      <label for="Unemployment">Unemployment:</label>
+      <input type="text" id="Unemployment" name="Unemployment" value="10"/><br /><br />
 
-        <label for="Fuel_Price">Fuel_Price: (optional = 10)</label>
-        <input type="text" id="Fuel_Price" name="Fuel_Price" ><br><br>
+      <button type="submit" >Run Model</button>
+      <br />
 
+      <p>Forecasted Weekly Sales: <p2>{{result}}</p2></p>
 
-        <label for="MarkDown1">MarkDown1: (optional = 10)</label>
-        <input type="text" id="MarkDown1" name="MarkDown1" ><br><br>
-
-
-        <label for="MarkDown2">MarkDown2: (optional = 10)</label>
-        <input type="text" id="MarkDown2" name="MarkDown2" ><br><br>
-
-
-        <label for="MarkDown3">MarkDown3: (optional = 10)</label>
-        <input type="text" id="MarkDown3" name="MarkDown3" ><br><br>
-
-
-        <label for="MarkDown4">MarkDown4: (optional = 10)</label>
-        <input type="text" id="MarkDown4" name="MarkDown4" ><br><br>
-
-
-        <label for="MarkDown5">MarkDown5: (optional = 10)</label>
-        <input type="text" id="MarkDown5" name="MarkDown5" ><br><br>
-
-
-        <label for="CPI">CPI: (optional = 10)</label>
-        <input type="text" id="CPI" name="CPI" ><br><br>
-
-
-        <label for="Unemployment">Unemployment: (optional = 10)</label>
-        <input type="text" id="Unemployment" name="Unemployment" ><br><br>
-
-
-        <input type="submit" value="Run Model">
-        <br>
     </form>
 
-    <!-- Display the result here -->
-    <div>
-        <h2>Result:</h2>
-        <p>{{ result }}</p>
-    </div>
-</body>
-</html>
 
+
+
+  </body>
+</html>
