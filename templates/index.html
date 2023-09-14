@@ -132,7 +132,7 @@
 
         <label for="Store">Store:</label>
         <select id="Store" name="Store">
-            {% for store_number in store_numbers %}
+            {% for store_number in range(1, 46) %}
                 <option value="{{ store_number }}" {%if store_number == Store %} selected {%endif%}>{{ store_number }}</option>
             {% endfor %}
         </select>
@@ -140,8 +140,8 @@
         <label for="Dept">Dept:</label>
         <select id="Dept" name="Dept">
             <!-- Initially, show all departments for the first store -->
-            {% for dept in dept_numbers %}
-                <option value="{{ dept }}" {% if dept == Dept %} selected {%endif%}> {{ dept }}</option>
+            {% for dept in range(1, 101) %}
+                <option value="{{ dept }}" {% if dept == Dept %} selected {% endif %}> {{ dept }}</option>
             {% endfor %}
         </select>
         <br /><br />
@@ -150,7 +150,7 @@
 
         <label for="Year">Year:</label>
         <select id="Year" name="Year">
-            {% for Year_number in Year_numbers %}
+            {% for Year_number in range(2010, 2014) %}
                 <option value="{{ Year_number }}" {% if Year_number == Year %}selected{% endif %}>{{ Year_number }}</option>
             {% endfor %}
         </select>
@@ -158,7 +158,7 @@
 
         <label for="Month">Month:</label>
         <select id="Month" name="Month">
-            {% for Month_number in Month_numbers %}
+            {% for Month_number in range(1,13) %}
                 <option value="{{ Month_number }}" {% if Month_number == Month %}selected{% endif %}>{{ Month_number }}</option>
             {% endfor %}
         </select>

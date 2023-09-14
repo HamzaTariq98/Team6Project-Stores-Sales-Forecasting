@@ -24,7 +24,7 @@ def model_function(x1):
 
 @app.route("/")
 def main_page():
-    return render_template('index.html',store_numbers=range(1, 46),Month_numbers = range(1,13),Year_numbers = range(2010,2014), dept_numbers=range(1,101))
+    return render_template('index.html')
 
 @app.route("/model_run", methods=['POST'])
 def model_run():
@@ -134,7 +134,7 @@ def model_run():
     result = model_function(x1)  # Replace with your actual model function
     result = f"${result:,.0f}"
     # Render the template with the result
-    return render_template('index.html', result=result,store_numbers=range(1, 46),Month_numbers = range(1,13),Year_numbers = range(2010,2014), dept_numbers=range(1,101),scroll =1, Store=Store,Dept=Dept,Year=Year,Month=Month,IsHoliday=IsHoliday,Temperature=Temperature,Fuel_Price=Fuel_Price,MarkDown1=MarkDown1,MarkDown2=MarkDown2,MarkDown3=MarkDown3,MarkDown4=MarkDown4,MarkDown5=MarkDown5,CPI=CPI,Unemployment=Unemployment)
+    return render_template('index.html', result=result, Store=Store,Dept=Dept,Year=Year,Month=Month,IsHoliday=IsHoliday,Temperature=Temperature,Fuel_Price=Fuel_Price,MarkDown1=MarkDown1,MarkDown2=MarkDown2,MarkDown3=MarkDown3,MarkDown4=MarkDown4,MarkDown5=MarkDown5,CPI=CPI,Unemployment=Unemployment)
 
 if __name__ == "__main__":
     app.run(debug=True)
