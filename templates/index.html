@@ -125,94 +125,91 @@
     >
     <br />
 
-    <section class="Forecasting">
 
-        <form action="/model_run" method="POST">
-        <br />
+    <form action="/model_run" method="POST">
+    <br />
 
-        <label for="Store">Store:</label>
-        <select id="Store" name="Store">
-            {% for store_number in range(1, 46) %}
-                <option value="{{ store_number }}" {%if store_number == Store %} selected {%endif%}>{{ store_number }}</option>
-            {% endfor %}
-        </select>
+    <label for="Store">Store:</label>
+    <select id="Store" name="Store">
+        {% for store_number in range(1, 46) %}
+            <option value="{{ store_number }}" {%if store_number == Store %} selected {%endif%}>{{ store_number }}</option>
+        {% endfor %}
+    </select>
 
-        <label for="Dept">Dept:</label>
-        <select id="Dept" name="Dept">
-            <!-- Initially, show all departments for the first store -->
-            {% for dept in range(1, 101) %}
-                <option value="{{ dept }}" {% if dept == Dept %} selected {% endif %}> {{ dept }}</option>
-            {% endfor %}
-        </select>
-        <br /><br />
+    <label for="Dept">Dept:</label>
+    <select id="Dept" name="Dept">
+        {% for dept in range(1, 101) %}
+            <option value="{{ dept }}" {% if dept == Dept %} selected {% endif %}> {{ dept }}</option>
+        {% endfor %}
+    </select>
+    <br /><br />
 
-        
-
-        <label for="Year">Year:</label>
-        <select id="Year" name="Year">
-            {% for Year_number in range(2010, 2014) %}
-                <option value="{{ Year_number }}" {% if Year_number == Year %}selected{% endif %}>{{ Year_number }}</option>
-            {% endfor %}
-        </select>
     
 
-        <label for="Month">Month:</label>
-        <select id="Month" name="Month">
-            {% for Month_number in range(1,13) %}
-                <option value="{{ Month_number }}" {% if Month_number == Month %}selected{% endif %}>{{ Month_number }}</option>
-            {% endfor %}
-        </select>
-        <br /><br />
-        
-        <label for="IsHoliday">Holiday:</label>
-
-        <label class="radio-label" for="IsHolidayNo">No</label>
-        <input type="radio" id="IsHolidayNo" name="IsHoliday" value="No" {% if IsHoliday == 0 or IsHoliday is not defined %} checked {% endif %}/>
-        
-
-        <label class="radio-label" for="IsHolidayYes">Yes</label>
-        <input type="radio" id="IsHolidayYes" name="IsHoliday" value="Yes" {% if IsHoliday == 1 %} checked {% endif %}/>
-        
-        <br /><br />
+    <label for="Year">Year:</label>
+    <select id="Year" name="Year">
+        {% for Year_number in range(2010, 2014) %}
+            <option value="{{ Year_number }}" {% if Year_number == Year %}selected{% endif %}>{{ Year_number }}</option>
+        {% endfor %}
+    </select>
 
 
-        <label for="MarkDown1">MarkDown1:</label>
-        <input type="text" id="MarkDown1" name="MarkDown1" value="{{ MarkDown1|default(0) }}" /><br /><br />
+    <label for="Month">Month:</label>
+    <select id="Month" name="Month">
+        {% for Month_number in range(1,13) %}
+            <option value="{{ Month_number }}" {% if Month_number == Month %}selected{% endif %}>{{ Month_number }}</option>
+        {% endfor %}
+    </select>
+    <br /><br />
+    
+    <label for="IsHoliday">Holiday:</label>
 
-        <label for="MarkDown2">MarkDown2:</label>
-        <input type="text" id="MarkDown2" name="MarkDown2" value="{{ MarkDown2|default(0) }}" /><br /><br />
+    <label class="radio-label" for="IsHolidayNo">No</label>
+    <input type="radio" id="IsHolidayNo" name="IsHoliday" value="No" {% if IsHoliday == 0 or IsHoliday is not defined %} checked {% endif %}/>
+    
 
-        <label for="MarkDown3">MarkDown3:</label>
-        <input type="text" id="MarkDown3" name="MarkDown3" value="{{ MarkDown3|default(0) }}" /><br /><br />
-
-        <label for="MarkDown4">MarkDown4:</label>
-        <input type="text" id="MarkDown4" name="MarkDown4" value="{{ MarkDown4|default(0) }}" /><br /><br />
-
-        <label for="MarkDown5">MarkDown5:</label>
-        <input type="text" id="MarkDown5" name="MarkDown5" value="{{ MarkDown5|default(0) }}" /><br /><br />
-
-
-        <label for="Temperature">Temperature:</label>
-        <input type="text" id="Temperature" name="Temperature" value="{{ Temperature|default(25) }}"/><br /><br />
-
-        <label for="Fuel_Price">Fuel Price:</label>
-        <input type="text" id="Fuel_Price" name="Fuel_Price" value="{{ Fuel_Price|default(2.6) }}" /><br /><br />
+    <label class="radio-label" for="IsHolidayYes">Yes</label>
+    <input type="radio" id="IsHolidayYes" name="IsHoliday" value="Yes" {% if IsHoliday == 1 %} checked {% endif %}/>
+    
+    <br /><br />
 
 
-        <label for="CPI">Consumer Price Index (CPI):</label>
-        <input type="text" id="CPI" name="CPI" value="{{ CPI|default(210) }}" /><br /><br/>
+    <label for="MarkDown1">MarkDown1:</label>
+    <input type="text" id="MarkDown1" name="MarkDown1" value="{{ MarkDown1|default(0) }}" /><br /><br />
 
-        <label for="Unemployment">Unemployment:</label>
-        <input type="text" id="Unemployment" name="Unemployment" value="{{ Unemployment|default(8.1) }}"/><br /><br />
+    <label for="MarkDown2">MarkDown2:</label>
+    <input type="text" id="MarkDown2" name="MarkDown2" value="{{ MarkDown2|default(0) }}" /><br /><br />
 
-        <button id="resultButton" type="submit" >Run Model</button>
-        <br />
+    <label for="MarkDown3">MarkDown3:</label>
+    <input type="text" id="MarkDown3" name="MarkDown3" value="{{ MarkDown3|default(0) }}" /><br /><br />
 
-        <p id="resultSection">Forecasted Weekly Sales: <p2>{{result}}</p2></p>
+    <label for="MarkDown4">MarkDown4:</label>
+    <input type="text" id="MarkDown4" name="MarkDown4" value="{{ MarkDown4|default(0) }}" /><br /><br />
 
-        </form>
-        <br/><br/>
-    </section>
+    <label for="MarkDown5">MarkDown5:</label>
+    <input type="text" id="MarkDown5" name="MarkDown5" value="{{ MarkDown5|default(0) }}" /><br /><br />
+
+
+    <label for="Temperature">Temperature:</label>
+    <input type="text" id="Temperature" name="Temperature" value="{{ Temperature|default(25) }}"/><br /><br />
+
+    <label for="Fuel_Price">Fuel Price:</label>
+    <input type="text" id="Fuel_Price" name="Fuel_Price" value="{{ Fuel_Price|default(2.6) }}" /><br /><br />
+
+
+    <label for="CPI">Consumer Price Index (CPI):</label>
+    <input type="text" id="CPI" name="CPI" value="{{ CPI|default(210) }}" /><br /><br/>
+
+    <label for="Unemployment">Unemployment:</label>
+    <input type="text" id="Unemployment" name="Unemployment" value="{{ Unemployment|default(8.1) }}"/><br /><br />
+
+    <button id="resultButton" type="submit" >Run Model</button>
+    <br />
+
+    <p id="resultSection">Forecasted Weekly Sales: <p2>{{result}}</p2></p>
+
+    </form>
+    <br/><br/>
 
 
   </body>
