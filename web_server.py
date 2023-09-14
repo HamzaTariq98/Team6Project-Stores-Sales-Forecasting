@@ -8,12 +8,13 @@ app = Flask(__name__)
 
 
 def model_function(x1):
-    x1 = pd.DataFrame(x1, columns=['Store','Dept','Year','Month','IsHoliday','Type','Size','Temperature','Fuel_Price','MarkDown1','MarkDown2','MarkDown3','MarkDown4','MarkDown5','CPI','Unemployment'])
+    # x1 = pd.DataFrame(x1, columns=['Store','Dept','Year','Month','IsHoliday','Type','Size','Temperature','Fuel_Price','MarkDown1','MarkDown2','MarkDown3','MarkDown4','MarkDown5','CPI','Unemployment'])
        
-    loaded_model = joblib.load('.//Models//decision_tree_model.pkl')
-    loaded_model_incoder = joblib.load('.//Models//incoder_model.pkl')
-    x1 = loaded_model_incoder.transform(x1)
-    result = loaded_model.predict(x1)[0]
+    # loaded_model = joblib.load('.//Models//decision_tree_model.pkl')
+    # loaded_model_incoder = joblib.load('.//Models//incoder_model.pkl')
+    # x1 = loaded_model_incoder.transform(x1)
+    # result = loaded_model.predict(x1)[0]
+    result = ':S'
     return result
 
 
