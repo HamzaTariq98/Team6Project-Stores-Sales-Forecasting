@@ -6,6 +6,12 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
+stores_departments = {
+    '1': ['Dept 1', 'Dept 2', 'Dept 3'],
+    '2': ['Dept 4', 'Dept 5', 'Dept 6'],
+    # Add more stores and their respective departments here
+}
+
 def model_function(x1):
     x1 = pd.DataFrame(x1, columns=['Store','Dept','Year','Month','IsHoliday','Type','Size','Temperature','Fuel_Price','MarkDown1','MarkDown2','MarkDown3','MarkDown4','MarkDown5','CPI','Unemployment'])
        
@@ -18,7 +24,7 @@ def model_function(x1):
 
 @app.route("/")
 def main_page():
-    return render_template('index.html', result='......')
+    return render_template('index.html',store_numbers=range(1, 46),Month_numbers = range(1,13),Year_numbers = range(2010,2014), dept_numbers=range(1,101))
 
 @app.route("/model_run", methods=['POST'])
 def model_run():
@@ -31,6 +37,9 @@ def model_run():
         Store = 10
     else:
         Store = float(Store)
+        df = pd.read_csv('.\static\stores.csv')
+        Type = df[df['Store']==Store]['Type'].values[0]
+        Size = df[df['Store']==Store]['Size'].values[0]
 
     # Dept
     Dept = request.form.get('Dept')
@@ -52,18 +61,8 @@ def model_run():
         IsHoliday = float(1)
     else:
          IsHoliday = float(0)
-    # Type
-    Type = request.form.get('Type')
-    if Type == None or Type == '':
-        Type = 'A'
 
 
-    # Size
-    Size = request.form.get('Size')
-    if Size == None or Size == '':
-        Size = 10
-    else:
-        Size = float(Size)
 
     # Temperature
     Temperature = request.form.get('Temperature')
@@ -133,9 +132,9 @@ def model_run():
 
     # Replace this with your model loading and prediction code
     result = model_function(x1)  # Replace with your actual model function
-
+    result = f"${result:,.0f}"
     # Render the template with the result
-    return render_template('index.html', result=result)
+    return render_template('index.html', result=result,store_numbers=range(1, 46),Month_numbers = range(1,13),Year_numbers = range(2010,2014), dept_numbers=range(1,101),scroll =1, Store=Store,Dept=Dept,Year=Year,Month=Month,IsHoliday=IsHoliday,Temperature=Temperature,Fuel_Price=Fuel_Price,MarkDown1=MarkDown1,MarkDown2=MarkDown2,MarkDown3=MarkDown3,MarkDown4=MarkDown4,MarkDown5=MarkDown5,CPI=CPI,Unemployment=Unemployment)
 
 if __name__ == "__main__":
     app.run(debug=True)
