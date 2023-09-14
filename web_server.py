@@ -126,10 +126,10 @@ def model_run():
 
     x1 = [[Store,Dept,Year,Month,IsHoliday,Type,Size,Temperature,Fuel_Price,MarkDown1,MarkDown2,MarkDown3,MarkDown4,MarkDown5,CPI,Unemployment]]
 
-    # Replace this with your model loading and prediction code
-    result = model_function(x1)  # Replace with your actual model function
-    result = f"${result:,.0f}"
-    # Render the template with the result
+
+    result = model_function(x1)  
+    # result = f"${result:,.0f}"
+
     return render_template('index.html', result=result)
 # , Store=Store,Dept=Dept,Year=Year,Month=Month,IsHoliday=IsHoliday,Temperature=Temperature,Fuel_Price=Fuel_Price,MarkDown1=MarkDown1,MarkDown2=MarkDown2,MarkDown3=MarkDown3,MarkDown4=MarkDown4,MarkDown5=MarkDown5,CPI=CPI,Unemployment=Unemployment
 if __name__ == "__main__":
