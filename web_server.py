@@ -24,14 +24,16 @@ def main_page():
 @app.route("/model_run", methods=['POST'])
 def model_run():
     
-
     Store = float(request.form.get('Store'))
-
-    df = pd.read_csv('.\static\stores.csv')
+    try:
+        df = pd.read_csv('./static/stores.csv')
+        Type = df[df['Store']==Store]['Type'].values[0]
+        Size = df[df['Store']==Store]['Size'].values[0]
+    except Exception as e:
+        # Handle the error, e.g., by logging it or returning an error page.
+        return render_template('error.html', error_message=str(e))
     
     return render_template('index.html', result=5)
-    Type = df[df['Store']==Store]['Type'].values[0]
-    Size = df[df['Store']==Store]['Size'].values[0]
 
     
     
