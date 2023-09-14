@@ -33,10 +33,7 @@ def model_run():
         # Handle the error, e.g., by logging it or returning an error page.
         return render_template('error.html', error_message=str(e))
     
-    return render_template('index.html', result=5)
 
-    
-    
     Dept = float(request.form.get('Dept'))
     Year = float(request.form.get('Year'))
     Month = float(request.form.get('Month'))
