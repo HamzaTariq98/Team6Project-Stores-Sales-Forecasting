@@ -134,8 +134,8 @@ def model_run():
     result = model_function(x1)  # Replace with your actual model function
     result = f"${result:,.0f}"
     # Render the template with the result
-    return render_template('index.html', result=result, Store=Store,Dept=Dept,Year=Year,Month=Month,IsHoliday=IsHoliday,Temperature=Temperature,Fuel_Price=Fuel_Price,MarkDown1=MarkDown1,MarkDown2=MarkDown2,MarkDown3=MarkDown3,MarkDown4=MarkDown4,MarkDown5=MarkDown5,CPI=CPI,Unemployment=Unemployment)
-
+    return render_template('index.html', result=result)
+# , Store=Store,Dept=Dept,Year=Year,Month=Month,IsHoliday=IsHoliday,Temperature=Temperature,Fuel_Price=Fuel_Price,MarkDown1=MarkDown1,MarkDown2=MarkDown2,MarkDown3=MarkDown3,MarkDown4=MarkDown4,MarkDown5=MarkDown5,CPI=CPI,Unemployment=Unemployment
 if __name__ == "__main__":
     app.run(debug=True)
 
