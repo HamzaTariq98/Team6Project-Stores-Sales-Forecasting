@@ -6,11 +6,6 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
-stores_departments = {
-    '1': ['Dept 1', 'Dept 2', 'Dept 3'],
-    '2': ['Dept 4', 'Dept 5', 'Dept 6'],
-    # Add more stores and their respective departments here
-}
 
 def model_function(x1):
     x1 = pd.DataFrame(x1, columns=['Store','Dept','Year','Month','IsHoliday','Type','Size','Temperature','Fuel_Price','MarkDown1','MarkDown2','MarkDown3','MarkDown4','MarkDown5','CPI','Unemployment'])
