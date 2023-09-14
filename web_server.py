@@ -25,13 +25,15 @@ def main_page():
 def model_run():
     
 
-    Store = request.form.get('Store')
-    Store = float(Store)
+    Store = float(request.form.get('Store'))
+
     df = pd.read_csv('.\static\stores.csv')
+    
+    return render_template('index.html', result=5)
     Type = df[df['Store']==Store]['Type'].values[0]
     Size = df[df['Store']==Store]['Size'].values[0]
 
-    return render_template('index.html', result=5)
+    
     
     Dept = float(request.form.get('Dept'))
     Year = float(request.form.get('Year'))
