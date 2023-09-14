@@ -23,15 +23,16 @@ def main_page():
 
 @app.route("/model_run", methods=['POST'])
 def model_run():
-    return render_template('index.html', result=5)
     
+
     Store = request.form.get('Store')
     Store = float(Store)
     df = pd.read_csv('.\static\stores.csv')
     Type = df[df['Store']==Store]['Type'].values[0]
     Size = df[df['Store']==Store]['Size'].values[0]
 
-
+    return render_template('index.html', result=5)
+    
     Dept = float(request.form.get('Dept'))
     Year = float(request.form.get('Year'))
     Month = float(request.form.get('Month'))
