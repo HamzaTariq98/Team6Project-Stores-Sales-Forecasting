@@ -2,10 +2,16 @@ body {
     color: aliceblue;
     background-color: #040117;
     font-family: Arial, sans-serif; /* Set a preferred font */  
-    font-size: 10px;
+    font-size: 12px;
 
 }
+h1 {
+    margin-left: 10px;
+}
 
+h2 {
+    margin-left: 10px;
+}
 div {
     background-color: rgba(1, 1, 60, 0.365);
     border: #ccc;
@@ -16,11 +22,19 @@ div.div0 {
     margin: 10px;
     margin-left: 10%;
     margin-right: 10%;
-    display: grid;
-    justify-items: center;
+    
 }
 
 div.div1 {
+    border-radius: 10px;
+    border: #0056b3;
+    overflow: hidden; /* Clear the floats inside the container */
+    margin: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+div.div2 {
     border-radius: 10px;
     border: #0056b3;
     overflow: hidden; /* Clear the floats inside the container */
@@ -34,14 +48,14 @@ div.pics {
     float: right;
     background: none;
 }
+
 img {
-    width: 550px;
     margin: 15px;
     border-radius: 5px;
 }
 
 form {
-    width: 300px;
+    width: 340px;
     background-color: rgb(0, 29, 63);
     color: aliceblue;
     margin: 15px;
@@ -73,6 +87,22 @@ input[type="text"]:focus {
     outline: none; /* Remove the default focus outline */
 }
 
+/* Apply styles to the input field */
+input[type="number"] {
+    padding: 1.5px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 135px; /* Adjust the maximum width as needed */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    margin-bottom: 0px;
+}
+
+/* Apply styles to the input field when it's focused (clicked) */
+input[type="number"]:focus {
+    border-color: #007bff; /* Change to your preferred focus color */
+    outline: none; /* Remove the default focus outline */
+}
 input[type="radio"] {
     margin-right: 5px;
     width: 16px; /* Adjust the width of the radio buttons */
@@ -92,6 +122,7 @@ input[type="radio"]:checked {
 
 /* Style for buttons */
 button {
+    margin-left: 10px;
     padding: 5px 10px;
     background-color: rgb(5 40 159); /* Primary button color */
     color: white;
@@ -141,4 +172,3 @@ select:focus {
 p2{
     font-size: larger;
 }
-
