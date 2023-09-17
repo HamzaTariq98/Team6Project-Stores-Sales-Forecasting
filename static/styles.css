@@ -1,0 +1,144 @@
+body {
+    color: aliceblue;
+    background-color: #040117;
+    font-family: Arial, sans-serif; /* Set a preferred font */  
+    font-size: 10px;
+
+}
+
+div {
+    background-color: rgba(1, 1, 60, 0.365);
+    border: #ccc;
+}
+div.div0 {
+    border-radius: 10px;
+    overflow: hidden; /* Clear the floats inside the container */
+    margin: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    justify-items: center;
+}
+
+div.div1 {
+    border-radius: 10px;
+    border: #0056b3;
+    overflow: hidden; /* Clear the floats inside the container */
+    margin: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+div.pics {
+    display: grid;
+    float: right;
+    background: none;
+}
+img {
+    width: 550px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+form {
+    width: 300px;
+    background-color: rgb(0, 29, 63);
+    color: aliceblue;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+
+}
+
+label {
+    margin: 11px;
+    font-weight: bold;
+}
+
+/* Apply styles to the input field */
+input[type="text"] {
+    padding: 1.5px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 135px; /* Adjust the maximum width as needed */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    margin-bottom: 0px;
+}
+
+/* Apply styles to the input field when it's focused (clicked) */
+input[type="text"]:focus {
+    border-color: #007bff; /* Change to your preferred focus color */
+    outline: none; /* Remove the default focus outline */
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+    width: 16px; /* Adjust the width of the radio buttons */
+    height: 16px; /* Adjust the height of the radio buttons */
+    border: 2px solid #ccc;
+    border-radius: 50%; /* Make them circular */
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/* Apply styles to radio buttons when they're checked (selected) */
+input[type="radio"]:checked {
+    border-color: #007bff;
+    outline: none;
+}
+
+
+/* Style for buttons */
+button {
+    padding: 5px 10px;
+    background-color: rgb(5 40 159); /* Primary button color */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+button.header {
+    margin-bottom: 10px;
+}
+
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
+
+/* Apply styles to the button when it's focused (clicked) */
+button:focus {
+    outline: none; /* Remove the default focus outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.7); /* Add a subtle shadow on focus */
+}
+
+
+/* Style for the select element */
+select {
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+    background-color: #fff; /* Set the background color */
+    color: #333; /* Set the text color */
+    cursor: pointer;
+}
+
+/* Apply styles to the select element when it's focused (clicked) */
+select:focus {
+    border-color: #007bff; /* Change to your preferred focus color */
+    outline: none; /* Remove the default focus outline */
+}
+
+
+p2{
+    font-size: larger;
+}
+
