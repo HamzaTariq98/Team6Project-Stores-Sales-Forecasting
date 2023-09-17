@@ -21,7 +21,7 @@ def model_function(x1):
 def main_page():
     return render_template('index.html')
 
-@app.route("/model_run", methods=['POST'])
+@app.route("/model_run#resultSection", methods=['POST'])
 def model_run():
     
     Store = float(request.form.get('Store'))
@@ -60,7 +60,7 @@ def model_run():
     result = model_function(x1)  
     result = f"${result:,.0f}"
 
-    return render_template('index.html', result=result, Store=Store,Dept=Dept,Year=Year,Month=Month,IsHoliday=IsHoliday,Temperature=Temperature,Fuel_Price=Fuel_Price,MarkDown1=MarkDown1,MarkDown2=MarkDown2,MarkDown3=MarkDown3,MarkDown4=MarkDown4,MarkDown5=MarkDown5,CPI=CPI,Unemployment=Unemployment)
+    return render_template('index.html', result=result, Store=Store,Dept=Dept,Year=Year,Month=Month,IsHoliday=IsHoliday,Temperature=Temperature,Fuel_Price=Fuel_Price,MarkDown1=MarkDown1,MarkDown2=MarkDown2,MarkDown3=MarkDown3,MarkDown4=MarkDown4,MarkDown5=MarkDown5,CPI=CPI,Unemployment=Unemployment, flag = 1)
 
 if __name__ == "__main__":
     app.run(debug=True)
