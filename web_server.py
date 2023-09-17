@@ -21,7 +21,7 @@ def model_function(x1):
 def main_page():
     return render_template('index.html')
 
-@app.route("/model_run#resultSection", methods=['POST'])
+@app.route("/model_run", methods=['POST'])
 def model_run():
     
     Store = float(request.form.get('Store'))
