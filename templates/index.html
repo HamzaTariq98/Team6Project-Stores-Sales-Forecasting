@@ -31,10 +31,21 @@
     <div class="div1">
         <h2 id="Overview-section">Overview</h2>
 
-        <div class="pics">
-            <img src="static\Picture1.png" alt="Pic not found :\" width="550px">
-            <img src="static\Picture2.png" alt="Pic not found :\" width="550px">
-        </div>
+        <p><strong>Store:</strong> The store number (1-45).</p>
+        <p><strong>Department:</strong> The department number (1-99).</p>
+        <p><strong>Year:</strong> Year number (2010-2013).</p>
+        <p><strong>Month:</strong> Month number (1-Jan, 2-Feb, etc.).</p>
+        <p><strong>Holiday:</strong> Yes, if a holiday is applied.</p>
+        <p><strong>MarkDown 1-5:</strong> Anonymized data related to promotional markdowns that Walmart <br> is running.</p>
+        <p><strong>Temperature:</strong> Average temperature in the region in Celsius.</p>
+        <p><strong>Fuel Price:</strong> Cost of fuel in the region in Dollars.</p>
+        <p><strong>Consumer Price Index (CPI):</strong> Average change in prices paid by customers.</p>
+        <p><strong>Unemployment:</strong> The unemployment rate.</p>
+
+        <!-- <div class="pics">
+            <img src="static\Picture1.png" alt="Pic not found :\" width="500px">
+            <img src="static\Picture2.png" alt="Pic not found :\" width="500px">
+        </div> -->
 
 
      
@@ -112,10 +123,10 @@
         <input type="number" step="any" id="MarkDown5" name="MarkDown5" value="{{ MarkDown5|default(0.0) }}" /><br /><br />
 
 
-        <label for="Temperature">Temperature:</label>
+        <label for="Temperature">Temperature(°C):</label>
         <input type="number" step="any" id="Temperature" name="Temperature" value="{{ Temperature|default(25.0) }}"/><br /><br />
 
-        <label for="Fuel_Price">Fuel Price:</label>
+        <label for="Fuel_Price">Fuel Price($):</label>
         <input type="number" step="any" id="Fuel_Price" name="Fuel_Price" value="{{ Fuel_Price|default(2.6) }}" /><br /><br />
 
         <label for="CPI">Consumer Price Index (CPI):</label>
@@ -125,7 +136,7 @@
         <input type="number" step="any" id="Unemployment" name="Unemployment" value="{{ Unemployment|default(8.1) }}"/><br /><br />
 
 
-        <button id="resultButton" type="submit" >Run Model</button>
+        <button id="resultButton" type="submit" >Run Model</button >
         <br />
         <p>Avg Actual: <p2>{{result_actual}}</p2></p>
         <p id="resultSection">Decision Tree: <p2>{{result_tree}}</p2></p>

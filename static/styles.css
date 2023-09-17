@@ -12,6 +12,10 @@ h1 {
 h2 {
     margin-left: 10px;
 }
+
+p {
+    margin-left: 10px;
+}
 div {
     background-color: rgba(1, 1, 60, 0.365);
     border: #ccc;
@@ -74,7 +78,7 @@ label {
 input[type="text"] {
     padding: 1.5px;
     border: 2px solid #ccc;
-    border-radius: 10px;
+    border-radius: 7px;
     width: 100%;
     max-width: 135px; /* Adjust the maximum width as needed */
     box-sizing: border-box; /* Ensure padding and border are included in width */
@@ -91,7 +95,7 @@ input[type="text"]:focus {
 input[type="number"] {
     padding: 1.5px;
     border: 2px solid #ccc;
-    border-radius: 10px;
+    border-radius: 7px;
     width: 100%;
     max-width: 135px; /* Adjust the maximum width as needed */
     box-sizing: border-box; /* Ensure padding and border are included in width */
