@@ -5,212 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Machine Learning Model</title>
     <link rel="icon" type="image/x-icon" href="static/favicon.ico" />
-    <style>
-        body {
-            color: aliceblue;
-            background-color: #120e16;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif; /* Set a preferred font */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
-        }
-        form {
-            width: 380px;
-            background-color: rgb(0, 29, 63);
-            color: aliceblue;
-            margin: 0 auto; /* Center the form horizontally */
-            padding: 20px;
-            border-radius: 30px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
-        }
-        label {
-            margin: 11px;
-            font-weight: bold;
-        }
-
-        /* Apply styles to the input field */
-        input[type="text"] {
-            padding: 4px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 135px; /* Adjust the maximum width as needed */
-            box-sizing: border-box; /* Ensure padding and border are included in width */
-            font-size: 14px;
-            margin-bottom: 2px;
-        }
-
-        /* Apply styles to the input field when it's focused (clicked) */
-        input[type="text"]:focus {
-            border-color: #007bff; /* Change to your preferred focus color */
-            outline: none; /* Remove the default focus outline */
-        }
-
-        /* Style for buttons */
-        button {
-            padding: 10px 20px;
-            background-color: rgb(5 40 159); /* Primary button color */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Hover effect for buttons */
-        button:hover {
-            background-color: #0056b3; /* Darker color on hover */
-        }
-
-        /* Apply styles to the button when it's focused (clicked) */
-        button:focus {
-            outline: none; /* Remove the default focus outline */
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.7); /* Add a subtle shadow on focus */
-        }
-
-        /* Additional styles for different button types if needed */
-        .button-secondary {
-            background-color: #6c757d; /* Secondary button color */
-        }
-
-        .button-danger {
-            background-color: #dc3545; /* Danger button color */
-        }
-
-        /* Style for the select element */
-        select {
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-sizing: border-box; /* Ensure padding and border are included in width */
-            font-size: 14px;
-            background-color: #fff; /* Set the background color */
-            color: #333; /* Set the text color */
-            cursor: pointer;
-        }
-
-        /* Apply styles to the select element when it's focused (clicked) */
-        select:focus {
-            border-color: #007bff; /* Change to your preferred focus color */
-            outline: none; /* Remove the default focus outline */
-        }
-
-
-        p2{
-            font-size: larger;
-        }
-        img {
-            float: right;
-            width: 600px;
-            margin-left: 20px; /* Add some margin to create space between images and content */
-        }
-    </style>
-
+    <link rel="stylesheet" href="static/styles.css">
   </head>
   <body>
 
-    
-    <h1>Stores Sales Forecasting Model</h1>
-    <br />
-    <img src="static\Picture1.png" alt="Pic not found :\"><br />
-    <img src="static\Picture2.png" alt="Pic not found :\"><br /><br />
-
-    <a href="https://github.com/HamzaTariq98/Team6Project" target="_blank"
-      ><button type="button">Code Link!</button></a
-    >
-    <br />
 
 
-    <form action="/model_run" method="POST">
-    <br />
+    <div class="div0">
 
-    <label for="Store">Store:</label>
-    <select id="Store" name="Store">
-        {% for store_number in range(1, 46) %}
-            <option value="{{ store_number }}" {%if store_number == Store %} selected {%endif%}>{{ store_number }}</option>
-        {% endfor %}
-    </select>
+    <h1>Team(6): Stores Sales Forecasting Model</h1>
+    <a href="https://github.com/HamzaTariq98/Team6Project" target="_blank">
+        <button type="button" class="header">Code Link!</button></a>
 
-    <label for="Dept">Dept:</label>
-    <select id="Dept" name="Dept">
-        {% for dept in range(1, 101) %}
-            <option value="{{ dept }}" {% if dept == Dept %} selected {% endif %}> {{ dept }}</option>
-        {% endfor %}
-    </select>
-    <br /><br />
+    <a href="#Overview-section">
+        <button type="button" class="header">Overview</button></a>
 
-    
-
-    <label for="Year">Year:</label>
-    <select id="Year" name="Year">
-        {% for Year_number in range(2010, 2014) %}
-            <option value="{{ Year_number }}" {% if Year_number == Year %}selected{% endif %}>{{ Year_number }}</option>
-        {% endfor %}
-    </select>
+    <a href="#Forecasting-section">
+        <button type="button" class="header">Forecasting</button></a>
 
 
-    <label for="Month">Month:</label>
-    <select id="Month" name="Month">
-        {% for Month_number in range(1,13) %}
-            <option value="{{ Month_number }}" {% if Month_number == Month %}selected{% endif %}>{{ Month_number }}</option>
-        {% endfor %}
-    </select>
-    <br /><br />
-    
-    <label for="IsHoliday">Holiday:</label>
-
-    <label class="radio-label" for="IsHolidayNo">No</label>
-    <input type="radio" id="IsHolidayNo" name="IsHoliday" value="No" {% if IsHoliday == 0 or IsHoliday is not defined %} checked {% endif %}/>
-    
-
-    <label class="radio-label" for="IsHolidayYes">Yes</label>
-    <input type="radio" id="IsHolidayYes" name="IsHoliday" value="Yes" {% if IsHoliday == 1 %} checked {% endif %}/>
-    
-    <br /><br />
+    </div>
 
 
-    <label for="MarkDown1">MarkDown1:</label>
-    <input type="text" id="MarkDown1" name="MarkDown1" value="{{ MarkDown1|default(0) }}" /><br /><br />
 
-    <label for="MarkDown2">MarkDown2:</label>
-    <input type="text" id="MarkDown2" name="MarkDown2" value="{{ MarkDown2|default(0) }}" /><br /><br />
+    <div class="div1" id="Overview-section">
+        <h2 >Overview</h2>
 
-    <label for="MarkDown3">MarkDown3:</label>
-    <input type="text" id="MarkDown3" name="MarkDown3" value="{{ MarkDown3|default(0) }}" /><br /><br />
+        <p><strong>Store:</strong> The store number (1-45).</p>
+        <p><strong>Department:</strong> The department number (1-99).</p>
+        <p><strong>Year:</strong> Year number (2010-2013).</p>
+        <p><strong>Month:</strong> Month number (1-Jan, 2-Feb, etc.).</p>
+        <p><strong>Holiday:</strong> Yes, if a holiday is applied.</p>
+        <p><strong>MarkDown 1-5:</strong> Anonymized data related to promotional markdowns that Walmart <br> is running.</p>
+        <p><strong>Temperature:</strong> Average temperature in the region in Celsius.</p>
+        <p><strong>Fuel Price:</strong> Cost of fuel in the region in Dollars.</p>
+        <p><strong>Consumer Price Index (CPI):</strong> Average change in prices paid by customers.</p>
+        <p><strong>Unemployment:</strong> The unemployment rate.</p>
 
-    <label for="MarkDown4">MarkDown4:</label>
-    <input type="text" id="MarkDown4" name="MarkDown4" value="{{ MarkDown4|default(0) }}" /><br /><br />
-
-    <label for="MarkDown5">MarkDown5:</label>
-    <input type="text" id="MarkDown5" name="MarkDown5" value="{{ MarkDown5|default(0) }}" /><br /><br />
-
-
-    <label for="Temperature">Temperature:</label>
-    <input type="text" id="Temperature" name="Temperature" value="{{ Temperature|default(25) }}"/><br /><br />
-
-    <label for="Fuel_Price">Fuel Price:</label>
-    <input type="text" id="Fuel_Price" name="Fuel_Price" value="{{ Fuel_Price|default(2.6) }}" /><br /><br />
+        <!-- <div class="pics">
+            <img src="static\Picture1.png" alt="Pic not found :\" width="500px">
+            <img src="static\Picture2.png" alt="Pic not found :\" width="500px">
+        </div> -->
 
 
-    <label for="CPI">Consumer Price Index (CPI):</label>
-    <input type="text" id="CPI" name="CPI" value="{{ CPI|default(210) }}" /><br /><br/>
+     
+    </div>
 
-    <label for="Unemployment">Unemployment:</label>
-    <input type="text" id="Unemployment" name="Unemployment" value="{{ Unemployment|default(8.1) }}"/><br /><br />
 
-    <button id="resultButton" type="submit" >Run Model</button>
-    <br />
 
-    <p id="resultSection">Forecasted Weekly Sales: <p2>{{result}}</p2></p>
+    <div class="div2" id="Forecasting-section">
+        <h2 >Forecasting Model</h2>
 
-    </form>
-    <br/><br/>
+        <div class="pics">
+            <img src="static\Picture1.png" alt="Pic not found :\" width="550px">
+            <img src="static\Picture2.png" alt="Pic not found :\" width="550px">
+        </div>
 
+        <form action="/model_run#resultSection" method="POST">
+        
+
+        <p>All Stores contain 99 Departments except for (3,5,9,10,25,35,42,45) contain 98 Depts</p>
+        <label for="Store">Store:</label>
+        <select id="Store" name="Store">
+            {% for store_number in range(1, 46) %}
+                <option value="{{ store_number }}" {%if store_number == Store %} selected {%endif%}>{{ store_number }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="Dept">Department:</label>
+        <select id="Dept" name="Dept">
+            {% for dept in range(1, 100) %}
+                <option value="{{ dept }}" {% if dept == Dept %} selected {% endif %}> {{ dept }}</option>
+            {% endfor %}
+        </select>
+        
+        <br /><br />
+
+        
+
+        <label for="Year">Year:</label>
+        <select id="Year" name="Year">
+            {% for Year_number in range(2010, 2014) %}
+                <option value="{{ Year_number }}" {% if Year_number == Year %}selected{% endif %}>{{ Year_number }}</option>
+            {% endfor %}
+        </select>
+
+
+        <label for="Month">Month:</label>
+        <select id="Month" name="Month">
+            {% for Month_number in range(1,13) %}
+                <option value="{{ Month_number }}" {% if Month_number == Month %}selected{% endif %}>{{ Month_number }}</option>
+            {% endfor %}
+        </select>
+        <br /><br />
+        
+        <label for="IsHoliday">Holiday:</label>
+        <label class="radio-label" for="IsHolidayNo">No</label>
+        <input type="radio" id="IsHolidayNo" name="IsHoliday" value="No" {% if IsHoliday == 0 or IsHoliday is not defined %} checked {% endif %}/>
+        <label class="radio-label" for="IsHolidayYes">Yes</label>
+        <input type="radio" id="IsHolidayYes" name="IsHoliday" value="Yes" {% if IsHoliday == 1 %} checked {% endif %}/>
+        <br /><br />
+
+
+        <label for="MarkDown1">MarkDown1:</label>
+        <input type="number" step="any" id="MarkDown1" name="MarkDown1" value="{{ MarkDown1|default(0.0) }}" /><br /><br />
+
+        <label for="MarkDown2">MarkDown2:</label>
+        <input type="number" step="any" id="MarkDown2" name="MarkDown2" value="{{ MarkDown2|default(0.0) }}" /><br /><br />
+
+        <label for="MarkDown3">MarkDown3:</label>
+        <input type="number" step="any" id="MarkDown3" name="MarkDown3" value="{{ MarkDown3|default(0.0) }}" /><br /><br />
+
+        <label for="MarkDown4">MarkDown4:</label>
+        <input type="number" step="any" id="MarkDown4" name="MarkDown4" value="{{ MarkDown4|default(0.0) }}" /><br /><br />
+
+        <label for="MarkDown5">MarkDown5:</label>
+        <input type="number" step="any" id="MarkDown5" name="MarkDown5" value="{{ MarkDown5|default(0.0) }}" /><br /><br />
+
+
+        <label for="Temperature">Temperature(°C):</label>
+        <input type="number" step="any" id="Temperature" name="Temperature" value="{{ Temperature|default(25.0) }}"/><br /><br />
+
+        <label for="Fuel_Price">Fuel Price($):</label>
+        <input type="number" step="any" id="Fuel_Price" name="Fuel_Price" value="{{ Fuel_Price|default(2.6) }}" /><br /><br />
+
+        <label for="CPI">Consumer Price Index (CPI):</label>
+        <input type="number" step="any" id="CPI" name="CPI" value="{{ CPI|default(210.0) }}" /><br /><br/>
+
+        <label for="Unemployment">Unemployment:</label>
+        <input type="number" step="any" id="Unemployment" name="Unemployment" value="{{ Unemployment|default(8.1) }}"/><br /><br />
+
+
+        <button id="resultButton" type="submit" >Run Model</button >
+        <br />
+        <p>Avg Actual: <p2>{{result_actual}}</p2></p>
+        <p id="resultSection">Decision Tree: <p2>{{result_tree}}</p2></p>
+        <p>Linear Regression: <p2>{{result_linear}}</p2></p>
+        
+
+        </form>
+
+     
+    </div>
 
   </body>
 </html>
