@@ -29,12 +29,14 @@
                 document.getElementById("SARIMAStore").value = "";
                 document.getElementById("SARIMAYear").value = "";
                 document.getElementById("SARIMAMonth").value = "";
+                
                 // Clear other SARIMA-specific fields here
             }
         }
     
         // Call toggleFormFields() when the page loads to initialize form field visibility
         window.onload = toggleFormFields;
+        
 
     </script>
 
@@ -120,7 +122,9 @@
                         <option value="{{ Month_number }}" {% if Month_number == Month %} selected {% endif %}>{{ Month_number }}</option>
                     {% endfor %}
                 </select>
-                <br><br>
+                <br>
+                <p>Forecast period (18/5/2012 - 3/1/2014)</p>
+                <br>
         
 
             </div>
