@@ -76,6 +76,7 @@ div.pics {
     float: right;
     background: none;
     align-content: center;
+    justify-items: center;
 }
 
 img {
@@ -216,6 +217,8 @@ p2{
         /* text-align: center; */
     }
 
+
+
     
 
 }
@@ -224,6 +227,15 @@ p2{
 
     img {
         width: 100%;
+    }
+
+    body {
+        font-size: 8px;
+    }
+
+    ul li {
+        margin-left: 10px;
+        line-height: 15px;
     }
 
     
