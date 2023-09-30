@@ -46,18 +46,9 @@
 
 
     <div class="div0">
-
     <h1>Team(6): Stores Sales Forecasting Model</h1>
     <a href="https://github.com/HamzaTariq98/Team6Project" target="_blank">
         <button type="button" class="header">Code Link!</button></a>
-
-    <a href="#Overview-section">
-        <button type="button" class="header">Overview</button></a>
-
-    <a href="#Forecasting-section">
-        <button type="button" class="header">Forecasting</button></a>
-
-
     </div>
 
 
@@ -65,16 +56,21 @@
     <div class="div1" id="Overview-section">
         <h2 >Overview</h2>
 
-        <p><strong>Store:</strong> The store number (1-45).</p>
-        <p><strong>Department:</strong> The department number (1-99).</p>
-        <p><strong>Year:</strong> Year number (2010-2013).</p>
-        <p><strong>Month:</strong> Month number (1-Jan, 2-Feb, etc.).</p>
-        <p><strong>Holiday:</strong> Yes, if a holiday is applied.</p>
-        <p><strong>MarkDown 1-5:</strong> Anonymized data related to promotional markdowns that Walmart <br> is running.</p>
-        <p><strong>Temperature:</strong> Average temperature in the region in Celsius.</p>
-        <p><strong>Fuel Price:</strong> Cost of fuel in the region in Dollars.</p>
-        <p><strong>Consumer Price Index (CPI):</strong> Average change in prices paid by customers.</p>
-        <p><strong>Unemployment:</strong> The unemployment rate.</p>
+        <div class="ulcontainer">
+            <ul>
+                <li><strong>Store:</strong> The store number (1-45).</li>
+                <li><strong>Department:</strong> The department number (1-99).</li>
+                <li><strong>Year:</strong> Year number (2010-2013).</li>
+                <li><strong>Month:</strong> Month number (1-Jan, 2-Feb, etc.).</li>
+                <li><strong>Holiday:</strong> Yes, if a holiday is applied.</li>
+                <li><strong>MarkDown 1-5:</strong> Anonymized data related to promotional markdowns that Walmart is running.</li>
+                <li><strong>Temperature:</strong> Average temperature in the region in Celsius.</li>
+                <li><strong>Fuel Price:</strong> Cost of fuel in the region in Dollars.</li>
+                <li><strong>Consumer Price Index (CPI):</strong> Average change in prices paid by customers.</li>
+                <li><strong>Unemployment:</strong> The unemployment rate.</li>
+            </ul>
+        </div>
+        
 
      
     </div>
@@ -83,137 +79,139 @@
 
     <div class="div2" id="Forecasting-section">
         <h2 >Forecasting Model</h2>
-
-        <div class="pics">
-            <img src="static\Picture1.png" alt="Pic not found :\" width="550px">
-            <img src="static\Picture2.png" alt="Pic not found :\" width="550px">
-        </div>
-
-        <form action="/model_run#resultSection" method="POST">
-            <label for="modelSelect">Select Model:</label>
-            <select id="modelSelect" name="modelSelect" onchange="toggleFormFields()">
-                <option value="Decision Tree" {% if request.form.get('modelSelect') == 'Decision Tree' %} selected {% endif %}>Decision Tree</option>
-                <option value="SARIMA" {% if request.form.get('modelSelect') == 'SARIMA' %} selected {% endif %}>SARIMA</option>
-            </select>
-            <br><br>
-        
-            <div id="sarimaFields" style="display:none;">
+        <div id="containeree">
+    
+            <div class="pics">
+                <img src="static\Picture1.png" alt="Pic not found :\" width="550px">
+                <img src="static\Picture2.png" alt="Pic not found :\" width="550px">
+            </div>
+    
+            <form action="/model_run#resultSection" method="POST">
+                <label for="modelSelect">Select Model:</label>
+                <select id="modelSelect" name="modelSelect" onchange="toggleFormFields()">
+                    <option value="Decision Tree" {% if request.form.get('modelSelect') == 'Decision Tree' %} selected {% endif %}> Decision Tree</option>
+                    <option value="SARIMA" {% if request.form.get('modelSelect') == "SARIMA" %} selected {% endif %}> SARIMA </option>
+                </select>
+                <br><br>
+    
+    
+                <div id="sarimaFields" style="display:none;">
+                    <br>
+                    <!-- SARIMA-specific form fields -->
+                    <label for="SARIMAStore">Store:</label>
+                    <select id="SARIMAStore" name="Store">
+                        {% for store_number in range(1, 46) %}
+                            <option value="{{ store_number }}" {% if store_number == Store %} selected {% endif %}>{{ store_number }}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+    
+    
+                    <label for="SARIMAYear">Year:</label>
+                    <select id="SARIMAYear" name="Year">
+                        {% for Year_number in range(2010, 2014) %}
+                            <option value="{{ Year_number }}" {% if Year_number == Year %} selected {% endif %}>{{ Year_number }}</option>
+                        {% endfor %}
+                    </select>
+    
+                    <label for="SARIMAMonth">Month:</label>
+                    <select id="SARIMAMonth" name="Month">
+                        {% for Month_number in range(1, 13) %}
+                            <option value="{{ Month_number }}" {% if Month_number == Month %} selected {% endif %}>{{ Month_number }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <p>Forecast period (18/5/2012 - 3/1/2014)</p>
+    
+    
+                </div>
+    
+            <div id="decisionTreeFields" style="display:block;">
                 <br>
-                <!-- SARIMA-specific form fields -->
-                <label for="SARIMAStore">Store:</label>
-                <select id="SARIMAStore" name="Store">
+                <!-- Decision Tree-specific form fields -->
+                <label for="Store">Store:</label>
+                <select id="Store" name="Store">
                     {% for store_number in range(1, 46) %}
                         <option value="{{ store_number }}" {% if store_number == Store %} selected {% endif %}>{{ store_number }}</option>
                     {% endfor %}
                 </select>
+    
+                <label for="Dept">Department:</label>
+                <select id="Dept" name="Dept">
+                    {% for dept in range(1, 100) %}
+                        <option value="{{ dept }}" {% if dept == Dept %} selected {% endif %}> {{ dept }}</option>
+                    {% endfor %}
+                </select>
                 <br><br>
- 
-        
-                <label for="SARIMAYear">Year:</label>
-                <select id="SARIMAYear" name="Year">
+                <label for="Year">Year:</label>
+                <select id="Year" name="Year">
                     {% for Year_number in range(2010, 2014) %}
-                        <option value="{{ Year_number }}" {% if Year_number == Year %} selected {% endif %}>{{ Year_number }}</option>
+                        <option value="{{ Year_number }}" {% if Year_number == Year %}selected{% endif %}>{{ Year_number }}</option>
                     {% endfor %}
                 </select>
-        
-                <label for="SARIMAMonth">Month:</label>
-                <select id="SARIMAMonth" name="Month">
+    
+                <label for="Month">Month:</label>
+                <select id="Month" name="Month">
                     {% for Month_number in range(1, 13) %}
-                        <option value="{{ Month_number }}" {% if Month_number == Month %} selected {% endif %}>{{ Month_number }}</option>
+                        <option value="{{ Month_number }}" {% if Month_number == Month %}selected{% endif %}>{{ Month_number }}</option>
                     {% endfor %}
                 </select>
-                <br>
-                <p>Forecast period (18/5/2012 - 3/1/2014)</p>
-                <br>
-        
-
+                <br><br>
+                <label for="IsHoliday">Holiday:</label>
+                <label class="radio-label" for="IsHolidayNo">No</label>
+                <input type="radio" id="IsHolidayNo" name="IsHoliday" value="No" {% if IsHoliday == 0 or IsHoliday is not defined %} checked {% endif %}/>
+                <label class="radio-label" for="IsHolidayYes">Yes</label>
+                <input type="radio" id="IsHolidayYes" name="IsHoliday" value="Yes" {% if IsHoliday == 1 %} checked {% endif %}/>
+                <br><br>
+                <label for="MarkDown1">MarkDown1:</label>
+                <input type="number" step="any" id="MarkDown1" name="MarkDown1" value="{{ MarkDown1|default(0.0) }}" /><br /><br />
+    
+                <label for="MarkDown2">MarkDown2:</label>
+                <input type="number" step="any" id="MarkDown2" name="MarkDown2" value="{{ MarkDown2|default(0.0) }}" /><br /><br />
+    
+                <label for="MarkDown3">MarkDown3:</label>
+                <input type="number" step="any" id="MarkDown3" name="MarkDown3" value="{{ MarkDown3|default(0.0) }}" /><br /><br />
+    
+                <label for="MarkDown4">MarkDown4:</label>
+                <input type="number" step="any" id="MarkDown4" name="MarkDown4" value="{{ MarkDown4|default(0.0) }}" /><br /><br />
+    
+                <label for="MarkDown5">MarkDown5:</label>
+                <input type="number" step="any" id="MarkDown5" name="MarkDown5" value="{{ MarkDown5|default(0.0) }}" /><br /><br />
+    
+                <label for="Temperature">Temperature(°C):</label>
+                <input type="number" step="any" id="Temperature" name="Temperature" value="{{ Temperature|default(25.0) }}"/><br /><br />
+    
+                <label for="Fuel_Price">Fuel Price($):</label>
+                <input type="number" step="any" id="Fuel_Price" name="Fuel_Price" value="{{ Fuel_Price|default(2.6) }}" /><br /><br />
+    
+                <label for="CPI">Consumer Price Index (CPI):</label>
+                <input type="number" step="any" id="CPI" name="CPI" value="{{ CPI|default(210.0) }}" /><br /><br/>
+    
+                <label for="Unemployment">Unemployment:</label>
+                <input type="number" step="any" id="Unemployment" name="Unemployment" value="{{ Unemployment|default(8.1) }}"/><br /><br />
             </div>
-
-        <div id="decisionTreeFields" style="display:block;">
+    
             <br>
-            <!-- Decision Tree-specific form fields -->
-            <label for="Store">Store:</label>
-            <select id="Store" name="Store">
-                {% for store_number in range(1, 46) %}
-                    <option value="{{ store_number }}" {% if store_number == Store %} selected {% endif %}>{{ store_number }}</option>
-                {% endfor %}
-            </select>
-            
-            <label for="Dept">Department:</label>
-            <select id="Dept" name="Dept">
-                {% for dept in range(1, 100) %}
-                    <option value="{{ dept }}" {% if dept == Dept %} selected {% endif %}> {{ dept }}</option>
-                {% endfor %}
-            </select>
-            <br><br>
-            <label for="Year">Year:</label>
-            <select id="Year" name="Year">
-                {% for Year_number in range(2010, 2014) %}
-                    <option value="{{ Year_number }}" {% if Year_number == Year %}selected{% endif %}>{{ Year_number }}</option>
-                {% endfor %}
-            </select>
-
-            <label for="Month">Month:</label>
-            <select id="Month" name="Month">
-                {% for Month_number in range(1, 13) %}
-                    <option value="{{ Month_number }}" {% if Month_number == Month %}selected{% endif %}>{{ Month_number }}</option>
-                {% endfor %}
-            </select>
-            <br><br>
-            <label for="IsHoliday">Holiday:</label>
-            <label class="radio-label" for="IsHolidayNo">No</label>
-            <input type="radio" id="IsHolidayNo" name="IsHoliday" value="No" {% if IsHoliday == 0 or IsHoliday is not defined %} checked {% endif %}/>
-            <label class="radio-label" for="IsHolidayYes">Yes</label>
-            <input type="radio" id="IsHolidayYes" name="IsHoliday" value="Yes" {% if IsHoliday == 1 %} checked {% endif %}/>
-            <br><br>
-            <label for="MarkDown1">MarkDown1:</label>
-            <input type="number" step="any" id="MarkDown1" name="MarkDown1" value="{{ MarkDown1|default(0.0) }}" /><br /><br />
-
-            <label for="MarkDown2">MarkDown2:</label>
-            <input type="number" step="any" id="MarkDown2" name="MarkDown2" value="{{ MarkDown2|default(0.0) }}" /><br /><br />
-
-            <label for="MarkDown3">MarkDown3:</label>
-            <input type="number" step="any" id="MarkDown3" name="MarkDown3" value="{{ MarkDown3|default(0.0) }}" /><br /><br />
-
-            <label for="MarkDown4">MarkDown4:</label>
-            <input type="number" step="any" id="MarkDown4" name="MarkDown4" value="{{ MarkDown4|default(0.0) }}" /><br /><br />
-
-            <label for="MarkDown5">MarkDown5:</label>
-            <input type="number" step="any" id="MarkDown5" name="MarkDown5" value="{{ MarkDown5|default(0.0) }}" /><br /><br />
-
-            <label for="Temperature">Temperature(°C):</label>
-            <input type="number" step="any" id="Temperature" name="Temperature" value="{{ Temperature|default(25.0) }}"/><br /><br />
-
-            <label for="Fuel_Price">Fuel Price($):</label>
-            <input type="number" step="any" id="Fuel_Price" name="Fuel_Price" value="{{ Fuel_Price|default(2.6) }}" /><br /><br />
-
-            <label for="CPI">Consumer Price Index (CPI):</label>
-            <input type="number" step="any" id="CPI" name="CPI" value="{{ CPI|default(210.0) }}" /><br /><br/>
-
-            <label for="Unemployment">Unemployment:</label>
-            <input type="number" step="any" id="Unemployment" name="Unemployment" value="{{ Unemployment|default(8.1) }}"/><br /><br />
+            <!-- Common form fields (not model-specific) -->
+            <button id="resultButton" type="submit">Run Model</button>
+    
+    
+    
+            {% if request.form.get('modelSelect') == 'Decision Tree' %}
+                <p>Avg Actual: <p2>{{ result_actual }}</p2></p>
+                <p id="resultSection">Decision Tree: <p2>{{ result_tree }}</p2></p>
+    
+            {% elif request.form.get('modelSelect') == 'SARIMA' %}
+                <p id="resultSection">Result: <p2>{{ SARIMA_result }}</p2></p>
+            {% endif %}
+    
+            <img id="figureImage" src="static/figure1.jpg" alt="Figure 1" {% if flag ==1 %} style="display: none;" {% endif %}>
+    
+        </form>
+        
+    
         </div>
-
-        <br>
-        <!-- Common form fields (not model-specific) -->
-        <button id="resultButton" type="submit">Run Model</button>
-        
-        
-
-        {% if request.form.get('modelSelect') == 'Decision Tree' %}
-            <p>Avg Actual: <p2>{{ result_actual }}</p2></p>
-            <p id="resultSection">Decision Tree: <p2>{{ result_tree }}</p2></p>
-
-        {% elif request.form.get('modelSelect') == 'SARIMA' %}
-            <p id="resultSection">Result: <p2>{{ SARIMA_result }}</p2></p>
-        {% endif %}
-
-        
-
-    </form>
-    <img id="figureImage" src="static/figure1.jpg" alt="Figure 1" {% if flag ==1 %} style="display: none;" {% endif %}width="500px">
-        
-
+    </div>
     </body>
 
     

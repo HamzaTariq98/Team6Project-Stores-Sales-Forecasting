@@ -5,19 +5,18 @@ body {
     font-size: 12px;
 
 }
-h1 {
+h1,h2 {
     margin-left: 10px;
+    text-align: center;
 }
 
-h2 {
+ul li {
     margin-left: 10px;
+    line-height: 25px;
 }
 
-p {
-    margin-left: 10px;
-}
 div {
-    background-color: rgba(1, 1, 60, 0.365);
+    
     border: #ccc;
 }
 div.div0 {
@@ -26,7 +25,17 @@ div.div0 {
     margin: 10px;
     margin-left: 10%;
     margin-right: 10%;
+    background-color: rgba(1, 1, 60, 0.365);
     
+}
+
+.div0 a{
+    text-align: center;
+    display: block;
+}
+
+.row{
+    width: 100%;
 }
 
 div.div1 {
@@ -36,7 +45,11 @@ div.div1 {
     margin: 10px;
     margin-left: 10%;
     margin-right: 10%;
+    background-color: rgba(1, 1, 60, 0.365);
+
 }
+
+
 
 div.div2 {
     border-radius: 10px;
@@ -45,12 +58,24 @@ div.div2 {
     margin: 10px;
     margin-left: 10%;
     margin-right: 10%;
+    background-color: rgba(1, 1, 60, 0.365);
+
 }
+
+#containeree{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+
 
 div.pics {
     display: grid;
     float: right;
     background: none;
+    align-content: center;
 }
 
 img {
@@ -60,6 +85,7 @@ img {
 
 form {
     width: 340px;
+    /* height: 220px; */
     background-color: rgb(0, 29, 63);
     color: aliceblue;
     margin: 15px;
@@ -175,4 +201,49 @@ select:focus {
 
 p2{
     font-size: larger;
+}
+
+@media screen and (max-width: 1280px) {
+
+    div.pics {
+        margin: auto;
+        background: none ;
+
+    }
+
+    form {
+        margin: auto;
+        /* text-align: center; */
+    }
+
+    
+
+}
+
+@media screen and (max-width: 800px) {
+
+    img {
+        width: 100%;
+    }
+
+    
+
+}
+
+
+@media screen and (min-width: 1700px) {
+    
+    .ulcontainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Vertically center items */
+        align-items: center; /* Horizontally center items */
+        height: 100%; /* Set a height to make sure it takes up the full height of the container */
+    }
+}
+
+#figureImage{
+    width: 100%;
+    display: block;
+    margin: auto;
 }
