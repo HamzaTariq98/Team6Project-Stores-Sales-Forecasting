@@ -29,9 +29,8 @@ div.div0 {
     
 }
 
-.div0 a{
+.div0 div{
     text-align: center;
-    display: block;
 }
 
 .row{
@@ -153,7 +152,6 @@ input[type="radio"]:checked {
 
 /* Style for buttons */
 button {
-    margin-left: 10px;
     padding: 5px 10px;
     background-color: rgb(5 40 159); /* Primary button color */
     color: white;
@@ -227,10 +225,6 @@ p2{
 
     img {
         width: 100%;
-    }
-
-    body {
-        font-size: 8px;
     }
 
     ul li {
