@@ -91,7 +91,7 @@
             <form action="/model_run#resultSection" method="POST">
                 <label for="modelSelect">Select Model:</label>
                 <select id="modelSelect" name="modelSelect" onchange="toggleFormFields()">
-                    <option value="Decision Tree" {% if request.form.get('modelSelect') == 'Decision Tree' %} selected {% endif %}> Decision Tree</option>
+                    <option value="Decision Tree" {% if request.form.get('modelSelect') == 'Decision Tree' %} selected {% endif %}> Linear Model</option>
                     <option value="SARIMA" {% if request.form.get('modelSelect') == "SARIMA" %} selected {% endif %}> SARIMA </option>
                 </select>
                 <br><br>
@@ -201,7 +201,7 @@
     
             {% if request.form.get('modelSelect') == 'Decision Tree' %}
                 <p>Avg Actual: <p2>{{ result_actual }}</p2></p>
-                <p id="resultSection">Decision Tree: <p2>{{ result_tree }}</p2></p>
+                <p id="resultSection">Linear Model: <p2>{{ result_tree }}</p2></p>
     
             {% elif request.form.get('modelSelect') == 'SARIMA' %}
                 <p id="resultSection">Result: <p2>{{ SARIMA_result }}</p2></p>
