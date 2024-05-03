@@ -91,10 +91,14 @@
             <form action="/model_run#resultSection" method="POST">
                 <label for="modelSelect">Select Model:</label>
                 <select id="modelSelect" name="modelSelect" onchange="toggleFormFields()">
-                    <option value="Decision Tree" {% if request.form.get('modelSelect') == 'Decision Tree' %} selected {% endif %}>Dicision Tree</option>
-                    <option value="SARIMA" {% if request.form.get('modelSelect') == "SARIMA" %} selected {% endif %}> SARIMA </option>
+                    <!-- <option value="Decision Tree" {% if request.form.get('modelSelect') == 'Decision Tree' %} selected {% endif %}>Dicision Tree</option> -->
+                    <option value="Decision Tree" {% if request.form.get('modelSelect') == 'Decision Tree' %} selected {% endif %}>Linear Regression</option>
+                    <!-- <option value="SARIMA" {% if request.form.get('modelSelect') == "SARIMA" %} selected {% endif %}> SARIMA </option> -->
                 </select>
-                <br><br>
+                <br>
+                <br>
+                <b>Linear Reg</b> model is used instead of SARIMA and Decision Tree models to be able to switch for the free plan provided by python anywhere service
+                <br>
     
     
                 <div id="sarimaFields" style="display:none;">
